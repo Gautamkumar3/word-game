@@ -4,11 +4,12 @@ const dbConnect = require("./config/db.js");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 const randomWords = require("random-words");
-
+const userRouter = require("./user/user.router");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use("/user", userRouter);
 
 app.get("/randomWord", (req, res) => {
   res.send(randomWords());
